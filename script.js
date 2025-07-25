@@ -78,6 +78,7 @@ const galleryData = [
     {
         id: 7,
 <<<<<<< HEAD
+<<<<<<< HEAD
         src: 'images/Farewell/1.jpg',
         
 =======
@@ -86,6 +87,9 @@ const galleryData = [
         'images/Farewell/fw.jpg'
         ],
 >>>>>>> 751aec0 (Initial commit - add all website files including images)
+=======
+        src: 'images/Farewell/1.jpg',
+>>>>>>> eaebc80 (Save work before pulling)
         title: 'Grade 10 Farewell',
         category: 'Cultural',
         date: '2024-01-20',
