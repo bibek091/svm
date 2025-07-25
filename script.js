@@ -78,7 +78,6 @@ const galleryData = [
     {
         id: 7,
         src: 'images/Farewell/1.jpg',
-        
         title: 'Grade 10 Farewell',
         category: 'Cultural',
         date: '2024-01-20',
