@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teachers Stylish Cards</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+    }
+    #teachers-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .teacher-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+      width: 280px;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.3s ease;
+    }
+    .teacher-card:hover {
+      box-shadow: 0 10px 20px rgb(0 0 0 / 0.2);
+    }
+    .image-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 256px; /* same as h-64 */
+    }
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+    .teacher-card:hover .image-wrapper img {
+      transform: scale(1.05);
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .teacher-card:hover .overlay {
+      opacity: 1;
+    }
+    .contact-icons {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .teacher-card:hover .contact-icons {
+      opacity: 1;
+    }
+    .contact-icons a {
+      padding: 8px;
+      background: rgba(255 255 255 / 0.2);
+      backdrop-filter: blur(6px);
+      border-radius: 9999px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+    .contact-icons a:hover {
+      background: rgba(255 255 255 / 0.3);
+    }
+    .contact-icons svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+    .content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      align-items: center;
+    }
+    .teacher-name {
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: #111;
+    }
+    .teacher-subject {
+      font-weight: 500;
+      color: #007BFF;
+      font-size: 1rem;
+    }
+    .experience {
+      font-size: 0.75rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .experience svg {
+      width: 12px;
+      height: 12px;
+      stroke-width: 2;
+    }
+    .qualifications {
+      color: #666;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+    .specializations-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 0.25rem;
+    }
+    .specializations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .specializations span {
+      background: #e0f0ff;
+      color: #007BFF;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+    }
+    .contact-info {
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: #666;
+    }
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .contact-info svg {
+      width: 12px;
+      height: 12px;
+      stroke-width: 2;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center; margin-bottom:2rem;">Our Teachers</h1>
+  <div id="teachers-container"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDymbKVAeevT5hqFJc8JvDPYgqCNSKou5U",
+      authDomain: "schooldb-c9cd1.firebaseapp.com",
+      projectId: "schooldb-c9cd1",
+      storageBucket: "schooldb-c9cd1.appspot.com",
+      messagingSenderId: "645507156099",
+      appId: "1:645507156099:web:278b79daac68121ed633b6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function fetchTeachers() {
+      const teachersCol = collection(db, "teacher");
+      const teacherSnapshot = await getDocs(teachersCol);
+      return teacherSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    }
+
+    function renderTeachers(teachers) {
+      const container = document.getElementById("teachers-container");
+      container.innerHTML = "";
+      teachers.forEach(t => {
+        // Skip invalid/empty records (no name or no subject)
+        if (!t.name || !t.subject) return;
+
+        const specializationsHTML = (t.specializations || []).map(spec => `<span>${spec}</span>`).join('');
+
+        const card = document.createElement("div");
+        card.className = "teacher-card";
+
+        card.innerHTML = `
+          <div class="image-wrapper">
+            <img src="${t.imageurl || 'https://plus.unsplash.com/premium_photo-1752832756659-4dd7c40f5ae7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}" alt="${t.name || 'Teacher'}" />
+            <div class="overlay"></div>
+            <div class="contact-icons">
+              <a href="mailto:${t.email || '#'}" title="Email">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </a>
+              <a href="tel:${t.phone || '#'}" title="Phone">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="content">
+            <div class="top-row">
+              <div>
+                <h3 class="teacher-name">${t.name || "N/A"}</h3>
+                <p class="teacher-subject">${t.subject || "N/A"}</p>
+              </div>
+              <div class="experience" title="Years of Experience">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/><path stroke-linecap="round" stroke-linejoin="round" d="M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                ${t.experience || "N/A"} Years
+              </div>
+            </div>
+            <p class="qualifications">${t.qualifications || "N/A"}</p>
+
+            <div class="specializations-label">Specializations:</div>
+            <div class="specializations">
+              ${specializationsHTML}
+            </div>
+
+            <div class="contact-info">
+              <div>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>${t.email || "N/A"}</span>
+              </div>
+              <div>
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <span>${t.phone || "N/A"}</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    fetchTeachers()
+      .then(renderTeachers)
+      .catch(err => {
+        console.error("Error fetching teachers:", err);
+        document.getElementById("teachers-container").textContent = "Failed to load teachers.";
+      });
+  </script>
+</body>
+</html>

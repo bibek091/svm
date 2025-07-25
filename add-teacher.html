@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Teacher</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f4f4f4;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 1rem;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Add New Teacher</h2>
+
+  <form id="teacherForm">
+    <input type="text" placeholder="Name" id="name" required />
+    <input type="text" placeholder="Subject" id="subject" required />
+    <input type="text" placeholder="Experience" id="experience" />
+    <input type="text" placeholder="Qualifications" id="qualifications" />
+    <input type="text" placeholder="Image URL" id="imageurl" />
+    <input type="email" placeholder="Email" id="email" />
+    <input type="tel" placeholder="Phone" id="phone" />
+    <input type="text" placeholder="Specializations (comma-separated)" id="specializations" />
+    <button type="submit">Submit</button>
+  </form>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    // Replace the config values with your actual Firebase project details
+    const firebaseConfig = {
+      apiKey: "AIzaSyDymbKVAeevT5hqFJc8JvDPYgqCNSKou5U",
+      authDomain: "schooldb-c9cd1.firebaseapp.com",
+      projectId: "schooldb-c9cd1",
+      storageBucket: "schooldb-c9cd1.appspot.com",
+      messagingSenderId: "645507156099",
+      appId: "1:645507156099:web:278b79daac68121ed633b6"
+      // measurementId is optional and can be omitted if you don’t use analytics
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("teacherForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById("name").value.trim(),
+        subject: document.getElementById("subject").value.trim(),
+        experience: document.getElementById("experience").value.trim(),
+        qualifications: document.getElementById("qualifications").value.trim(),
+        imageurl: document.getElementById("imageurl").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        specializations: document.getElementById("specializations").value
+          .split(",")
+          .map(s => s.trim())
+          .filter(s => s.length > 0)
+      };
+
+      try {
+        await addDoc(collection(db, "teacher"), data);
+        alert("✅ Teacher added successfully!");
+        form.reset();
+        window.location.href = "index.html"; // Redirect after success
+      } catch (err) {
+        console.error("❌ Error adding teacher:", err);
+        alert("Error adding teacher. Check the console for details.");
+      }
+    });
+  </script>
+
+</body>
+</html>

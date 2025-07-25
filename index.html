@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharada Vidhya Mandir - SEE Level Secondary School</title>
+       <!-- Add this to your <head> or before closing <body> tag -->
+
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+  
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                   <div class="flex items-center justify-center w-10 h-10 bg-primary rounded-lg overflow-hidden">
+                <img src="images/logo.png" alt="Sharada Vidhya Mandir Logo" class="w-full h-full object-contain" />
+                </div>
+
+                    <div>
+                        <h1 class="text-lg font-semibold text-foreground">Sharada Vidhya Mandir</h1>
+                        <p class="text-xs text-muted-foreground">SEE Level Secondary School</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <button onclick="scrollToSection('#home')" class="text-foreground hover:text-primary transition-colors duration-200">Home</button>
+                    <button onclick="scrollToSection('#about')" class="text-foreground hover:text-primary transition-colors duration-200">About</button>
+                    <button onclick="scrollToSection('#teachers')" class="text-foreground hover:text-primary transition-colors duration-200">Teachers</button>
+                    <button onclick="scrollToSection('#notices')" class="text-foreground hover:text-primary transition-colors duration-200">Notices</button>
+                    <button onclick="scrollToSection('#gallery')" class="text-foreground hover:text-primary transition-colors duration-200">Gallery</button>
+                    <button onclick="scrollToSection('#contact')" class="text-foreground hover:text-primary transition-colors duration-200">Contact</button>
+                </nav>
+
+                <!-- Dark Mode Toggle & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <button id="darkModeToggle" class="relative inline-flex h-6 w-11 items-center rounded-full bg-switch-background transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                            <span id="darkModeIndicator" class="inline-block h-4 w-4 transform rounded-full bg-background transition-transform translate-x-1"></span>
+                        </button>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 text-foreground hover:text-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden fixed inset-y-0 right-0 w-64 bg-card border-l transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+            <div class="flex flex-col space-y-4 mt-6 p-6">
+                <button onclick="scrollToSection('#home'); closeMobileMenu()" class="text-left text-foreground hover:text-primary transition-colors duration-200 py-2">Home</button>
+                <button onclick="scrollToSection('#about'); closeMobileMenu()" class="text-left text-foreground hover:text-primary transition-colors duration-200 py-2">About</button>
+                <button onclick="scrollToSection('#teachers'); closeMobileMenu()" class="text-left text-foreground hover:text-primary transition-colors duration-200 py-2">Teachers</button>
+                <button onclick="scrollToSection('#notices'); closeMobileMenu()" class="text-left text-foreground hover:text-primary transition-colors duration-200 py-2">Notices</button>
+                <button onclick="scrollToSection('#gallery'); closeMobileMenu()" class="text-left text-foreground hover:text-primary transition-colors duration-200 py-2">Gallery</button>
+                <button onclick="scrollToSection('#contact'); closeMobileMenu()" class="text-left text-foreground hover:text-primary transition-colors duration-200 py-2">Contact</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+            <!-- Background Slider -->
+            <div class="absolute inset-0">
+                <div id="slide-0" class="absolute inset-0 transition-opacity duration-1000 opacity-100">
+                    <img src="images/slide0.jpg" alt="Welcome to Sharada Vidhya Mandir" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+                <div id="slide-1" class="absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img src="images/slide1.jpg" alt="Excellence in Secondary Education" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+                <div id="slide-2" class="absolute inset-0 transition-opacity duration-1000 opacity-0">
+                    <img src="images/slide2.jpg" alt="SEE Preparation Excellence" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button id="prevSlide" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors duration-200 z-10">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <button id="nextSlide" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors duration-200 z-10">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <!-- Content -->
+            <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+                <h1 id="heroTitle" class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                    Welcome to Sharada Vidhya Mandir
+                </h1>
+                <p id="heroSubtitle" class="text-lg sm:text-xl lg:text-2xl mb-8 opacity-90">
+                    Preparing Students for SEE Success & Beyond
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <button class="px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-colors duration-200">
+                        SEE Admission 2024
+                    </button>
+                    <button class="px-6 py-3 border border-white text-white hover:bg-white hover:text-black rounded-lg font-medium transition-colors duration-200 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polygon points="5,3 19,12 5,21"/>
+                        </svg>
+                        School Tour
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full mb-3">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                            </svg>
+                        </div>
+                        <div class="text-2xl font-bold mb-1">450+</div>
+                        <div class="text-sm opacity-80">SEE Students</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full mb-3">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <div class="text-2xl font-bold mb-1">12+</div>
+                        <div class="text-sm opacity-80">Subjects Offered</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full mb-3">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                            </svg>
+                        </div>
+                        <div class="text-2xl font-bold mb-1">98%</div>
+                        <div class="text-sm opacity-80">SEE Pass Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide Indicators -->
+            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                <button onclick="setSlide(0)" id="indicator-0" class="w-3 h-3 rounded-full bg-white transition-colors duration-200"></button>
+                <button onclick="setSlide(1)" id="indicator-1" class="w-3 h-3 rounded-full bg-white/50 transition-colors duration-200"></button>
+                <button onclick="setSlide(2)" id="indicator-2" class="w-3 h-3 rounded-full bg-white/50 transition-colors duration-200"></button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-secondary/30">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left Content -->
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-foreground">
+                            About Sharada Vidhya Mandir
+                        </h2>
+                        <p class="text-lg text-muted-foreground mb-6 leading-relaxed">
+                            Established in 2066, Sharada Vidhya Mandir is a premier SEE level secondary school 
+                            dedicated to providing quality education for grades nursery to 10. We specialize in preparing students for the Secondary Education Examination (SEE) and guiding them towards successful higher education pathways.
+                        </p>
+                        <p class="text-lg text-muted-foreground mb-8 leading-relaxed">
+                            Our school follows the national curriculum with additional focus on SEE preparation, 
+                            ensuring students not only pass with flying colors but also develop the skills and 
+                            knowledge needed for their future academic journey in +2 and beyond.
+                        </p>
+
+                        <!-- Mission & Vision -->
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="bg-card border-l-4 border-l-primary rounded-lg p-6">
+                                <h3 class="font-semibold mb-3 text-primary">Our Mission</h3>
+                                <p class="text-sm text-muted-foreground">
+                                    To provide exceptional SEE level education that prepares students for 
+                                    successful completion of their secondary education and smooth transition 
+                                    to higher studies.
+                                </p>
+                            </div>
+                            <div class="bg-card border-l-4 border-l-primary rounded-lg p-6">
+                                <h3 class="font-semibold mb-3 text-primary">Our Vision</h3>
+                                <p class="text-sm text-muted-foreground">
+                                    To be the leading SEE level school that produces confident, competent, 
+                                    and well-prepared students ready for higher education challenges.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Content -->
+                    <div>
+                        <div class="relative mb-8">
+                            <img src="images/image1.jpg" alt="SEE Level School Building" class="w-full h-64 object-cover rounded-xl shadow-lg">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
+                        </div>
+
+                        <!-- Values Grid -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-card hover:shadow-md transition-shadow duration-200 rounded-lg p-4 text-center">
+                                <div class="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="font-semibold mb-2 text-sm">SEE Preparation</h4>
+                                <p class="text-xs text-muted-foreground leading-relaxed">
+                                    Comprehensive preparation for Secondary Education Examination with proven track record of success.
+                                </p>
+                            </div>
+                            <div class="bg-card hover:shadow-md transition-shadow duration-200 rounded-lg p-4 text-center">
+                                <div class="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="font-semibold mb-2 text-sm">Career Guidance</h4>
+                                <p class="text-xs text-muted-foreground leading-relaxed">
+                                    Expert guidance for higher education choices and career path planning after SEE completion.
+                                </p>
+                            </div>
+                            <div class="bg-card hover:shadow-md transition-shadow duration-200 rounded-lg p-4 text-center">
+                                <div class="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="font-semibold mb-2 text-sm">Character Development</h4>
+                                <p class="text-xs text-muted-foreground leading-relaxed">
+                                    Building strong moral values and leadership qualities in teenage students.
+                                </p>
+                            </div>
+                            <div class="bg-card hover:shadow-md transition-shadow duration-200 rounded-lg p-4 text-center">
+                                <div class="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-3">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="font-semibold mb-2 text-sm">Holistic Growth</h4>
+                                <p class="text-xs text-muted-foreground leading-relaxed">
+                                    Beyond academics, we focus on sports, arts, and co-curricular activities for overall development.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- Teachers Section -->
+<section id="teachers" class="py-16 bg-background">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
+        Our SEE Expert Faculty
+      </h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+        Meet our dedicated team of experienced SEE level educators who specialize in preparing students for secondary education examination success.
+      </p>
+    </div>
+ 
+
+ 
+
+    <!-- Dynamic Teacher Cards -->
+    <div id="teacherCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    <p id="noTeachersMsg" class="text-center text-muted mt-6">No teachers added yet.</p>
+
+    <!-- Add Teacher Button -->
+    <div class="mt-8 text-center">
+      <a href="add-teacher.html" class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-sm text-sm font-semibold hover:bg-blue-700 transition-all duration-200 inline-flex items-center gap-1 border border-blue-600">
+        <span class="text-lg leading-none">+</span> Add Teacher
+      </a>
+    </div>
+    <div class="mt-8 flex justify-center">
+    <a href="teacher.html" class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-sm text-sm font-semibold hover:bg-blue-700 transition-all duration-200 inline-flex items-center gap-1 border border-blue-600" style="font-weight:bold;">
+        Meet Our Teachers
+    </a>
+   
+
+</div>
+  </div>
+</section>
+
+<!-- Firebase Script
+<script type="module">
+  import { db } from './firebase-config.js';
+  import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const teacherCardsContainer = document.getElementById("teacherCards");
+  const noTeachersMsg = document.getElementById("noTeachersMsg");
+
+  async function loadTeachers() {
+    try {
+      const querySnapshot = await getDocs(collection(db, "teacher"));
+
+      if (querySnapshot.empty) {
+        noTeachersMsg.style.display = "block";
+        return;
+      }
+
+      noTeachersMsg.style.display = "none";
+      teacherCardsContainer.innerHTML = "";
+
+      querySnapshot.forEach((doc) => {
+        const t = doc.data();
+        const specializations = (t.specializations || []).map(spec =>
+          `<span class="px-2 py-1 bg-secondary text-xs rounded">${spec}</span>`
+        ).join("");
+
+        teacherCardsContainer.innerHTML += `
+          <div class="bg-white shadow rounded overflow-hidden group">
+            <img src="${t.imageurl}" class="w-full h-64 object-cover group-hover:scale-105 transition">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold">${t.name}</h3>
+              <p class="text-primary font-medium">${t.subject}</p>
+              <p class="text-sm text-muted">${t.qualifications}</p>
+              <div class="text-xs mt-2">Experience: ${t.experience}</div>
+              <div class="flex flex-wrap gap-1 mt-2">${specializations}</div>
+              <div class="mt-2 text-xs text-muted">
+                📧 ${t.email || "N/A"}<br>
+                📞 ${t.phone || "N/A"}
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    } catch (err) {
+      console.error("Error loading teachers:", err);
+      teacherCardsContainer.innerHTML = `<p class="text-red-500">Failed to load teachers. Please try again later.</p>`;
+    }
+  }
+
+  loadTeachers();
+</script> -->
+
+<!-- <form id="teacherForm">
+  <input name="name" placeholder="Name" required />
+  <input name="subject" placeholder="Subject" required />
+  <input name="experience" placeholder="Experience" />
+  <input name="qualification" placeholder="Qualification" />
+  <input name="email" placeholder="Email" />
+  <input name="phone" placeholder="Phone" />
+  <input name="imageUrl" placeholder="Image URL" />
+  <input name="specializations" placeholder="Specializations (comma separated)" />
+  <button type="submit">Add Teacher</button>
+</form>
+
+<script>
+  document.getElementById('teacherForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const teacher = Object.fromEntries(formData);
+    teacher.specializations = teacher.specializations.split(',').map(s => s.trim());
+
+    await fetch('http://localhost:5000/teachers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(teacher)
+    });
+
+    alert('Teacher added!');
+    e.target.reset();
+  });
+</script> -->
+
+                      
+
+                    <!-- Additional teacher cards would go here -->
+                    <!-- For brevity, I'll include just one detailed card -->
+                
+
+        <!-- Notices Section -->
+        <section id="notices" class="py-16 bg-secondary/30">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
+                        Latest Notices
+                    </h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Stay updated with SEE examination schedules, academic announcements, and important 
+                        information for Grade 9 and 10 students.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+                    <!-- Notice Cards -->
+                    <div class="bg-card hover:shadow-lg transition-shadow duration-300 rounded-lg">
+                        <div class="p-6 pb-3">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <h3 class="text-lg font-semibold">SEE Examination 2024 - Registration Notice</h3>
+                                        <span class="px-2 py-1 bg-red-500 text-white text-xs rounded">NEW</span>
+                                        <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex items-center gap-4 text-sm text-muted-foreground">
+                                        <div class="flex items-center gap-1">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                                <line x1="3" y1="10" x2="21" y2="10"/>
+                                            </svg>
+                                            15 Feb 2024
+                                        </div>
+                                        <span class="px-2 py-1 bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300 rounded text-xs">SEE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6">
+                            <p class="text-muted-foreground mb-4 leading-relaxed">
+                                SEE examination registration for Grade 10 students starts from March 1st, 2024. All required documents must be submitted by March 15th.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center text-xs text-muted-foreground">
+                                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3"/>
+                                        <path d="m12 1v6m0 6v6"/>
+                                    </svg>
+                                    Posted 8 days ago
+                                </div>
+                                <button class="px-3 py-1 border border-border rounded-lg text-sm font-medium hover:bg-accent transition-colors flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                    Download PDF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional notice cards would go here -->
+                </div>
+
+                <div class="text-center mt-12">
+                    <button class="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center gap-2 mx-auto">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        View All Notices
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-16 bg-background">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
+                        Photo Gallery
+                    </h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Capturing memorable moments from our SEE preparation activities, academic achievements, 
+                        sports events, and cultural celebrations.
+                    </p>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="flex flex-wrap justify-center gap-2 mb-8">
+                    <button onclick="filterGallery('All')" class="gallery-filter active px-4 py-2 rounded-lg font-medium transition-all duration-200 bg-primary text-primary-foreground">All</button>
+                    <button onclick="filterGallery('SEE Prep')" class="gallery-filter px-4 py-2 border border-border rounded-lg font-medium transition-all duration-200 hover:bg-accent">SEE Prep</button>
+                    <button onclick="filterGallery('Sports')" class="gallery-filter px-4 py-2 border border-border rounded-lg font-medium transition-all duration-200 hover:bg-accent">Sports</button>
+                    <button onclick="filterGallery('Cultural')" class="gallery-filter px-4 py-2 border border-border rounded-lg font-medium transition-all duration-200 hover:bg-accent">Cultural</button>
+                    <!-- <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="gallery-item" data-category="Cultural">
+                      <img src="images/Farewell/IMG-20230324-WA0000.jpg"Cultural Event 1" class="w-full rounded-lg shadow-md" />
+                       </div>
+                     <div class="gallery-item" data-category="Cultural">
+                       <img src="cultural2.jpg" alt="Cultural Event 2" class="w-full rounded-lg shadow-md" />
+                        </div>
+                    </div> -->
+
+                    <button onclick="filterGallery('Academic')" class="gallery-filter px-4 py-2 border border-border rounded-lg font-medium transition-all duration-200 hover:bg-accent">Academic</button>
+                    <button onclick="filterGallery('Awards')" class="gallery-filter px-4 py-2 border border-border rounded-lg font-medium transition-all duration-200 hover:bg-accent">Awards</button>
+                </div>
+
+                <!-- Image Grid -->
+                 <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+                    <!-- Gallery items will be populated by JavaScript -->
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-secondary/30">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-foreground">
+                        Contact Us
+                    </h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        Get in touch with us for admissions, inquiries, or any other information. 
+                        We're here to help and answer your questions.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                    <!-- Contact Information -->
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-6 text-foreground">Get In Touch</h3>
+                            <p class="text-muted-foreground mb-8">
+                                We welcome you to visit our campus or contact us through any of the following methods. 
+                                Our admissions team is ready to assist you with any questions about our programs.
+                            </p>
+                        </div>
+
+                        <!-- Contact Cards -->
+                        <div class="space-y-4">
+                            <div class="bg-card hover:shadow-md transition-shadow duration-200 rounded-lg p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg flex-shrink-0">
+                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                            <circle cx="12" cy="8" r="3"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold mb-2 text-foreground">Address</h4>
+                                        <p class="text-muted-foreground">Rakshyachaur 04, Tulsipur, Dang<br>Lumbini Province, Nepal</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Additional contact cards would go here -->
+                        </div>
+
+                        <!-- Map Placeholder -->
+                        <div class="bg-card rounded-lg overflow-hidden">
+                            <div class="h-64 bg-muted relative">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <svg class="w-12 h-12 text-primary mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        </svg>
+                                        <p class="text-muted-foreground">Interactive Map</p>
+                                        <p class="text-sm text-muted-foreground">Click to view location on Google Maps</p>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-card rounded-lg">
+                        <div class="p-6 border-b">
+                            <h3 class="text-lg font-semibold flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                </svg>
+                                Send us a Message
+                            </h3>
+                        </div>
+                        <div class="p-6">
+                            <form id="contactForm" class="space-y-6">
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium mb-1">Full Name *</label>
+                                        <input type="text" id="name" name="name" required placeholder="Enter your full name" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium mb-1">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium mb-1">Email Address *</label>
+                                    <input type="email" id="email" name="email" required placeholder="Enter your email address" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring">
+                                </div>
+                                <div>
+                                    <label for="subject" class="block text-sm font-medium mb-1">Subject *</label>
+                                    <input type="text" id="subject" name="subject" required placeholder="What is this regarding?" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium mb-1">Message *</label>
+                                    <textarea id="message" name="message" required placeholder="Tell us more about your inquiry..." rows="5" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring resize-vertical"></textarea>
+                                </div>
+                                <button type="submit" class="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                    </svg>
+                                    Send Message
+                                </button>
+                                <p class="text-xs text-muted-foreground text-center">
+                                    We'll get back to you within 24 hours during business days.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-card border-t">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Main Footer Content -->
+            <div class="py-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- School Info -->
+                    <div class="lg:col-span-1">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="flex items-center justify-center w-10 h-10 bg-primary rounded-lg">
+                                <svg class="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-foreground">Sharada Vidhya Mandir</h3>
+                                <p class="text-xs text-muted-foreground">SEE Level Secondary School</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-muted-foreground mb-6 leading-relaxed">
+                            Premier SEE level secondary school dedicated to preparing Grade 9 and 10 students 
+                            for secondary education examination success and future academic excellence.
+                        </p>
+                        
+                        <!-- Contact Info -->
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-4 h-4 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                </svg>
+                                <p class="text-xs text-muted-foreground">
+                                    Education Ward-5, Kathmandu<br>
+                                    Bagmati Province, Nepal
+                                </p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                <p class="text-xs text-muted-foreground">+977 1-5234567</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                <p class="text-xs text-muted-foreground">info@sharadavidhyamandir.edu.np</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="font-semibold text-foreground mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><button onclick="scrollToSection('#about')" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">About Us</button></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">SEE Admission</a></li>
+                            <li><button onclick="scrollToSection('#teachers')" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Faculty</button></li>
+                            <li><button onclick="scrollToSection('#notices')" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Notices</button></li>
+                            <li><button onclick="scrollToSection('#gallery')" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Gallery</button></li>
+                            <li><button onclick="scrollToSection('#contact')" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Contact</button></li>
+                        </ul>
+                    </div>
+
+                    <!-- Programs -->
+                    <div>
+                        <h4 class="font-semibold text-foreground mb-4">SEE Programs</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Grade 9 Program</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Grade 10 Program</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">SEE Preparation</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Science Stream Prep</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Optional Mathematics</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Career Counseling</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Resources -->
+                    <div>
+                        <h4 class="font-semibold text-foreground mb-4">Resources</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">SEE Exam Schedule</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Fee Structure</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">School Calendar</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Library Resources</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Transportation</a></li>
+                            <li><a href="#" class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">Student Handbook</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links & Copyright -->
+            <div class="border-t py-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <!-- Social Links -->
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-muted-foreground">Follow us:</span>
+                        <a href="#" class="p-2 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-full transition-all duration-200" aria-label="Facebook">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="p-2 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-full transition-all duration-200" aria-label="Twitter">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="p-2 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-full transition-all duration-200" aria-label="Instagram">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.621 5.367 11.988 11.988 11.988s11.987-5.367 11.987-11.988C24.014 5.367 18.647.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.33-1.297C4.198 14.553 3.708 13.402 3.708 12.105s.49-2.448 1.297-3.33C5.936 7.844 7.087 7.354 8.384 7.354s2.448.49 3.33 1.297c.931.931 1.421 2.082 1.421 3.379s-.49 2.448-1.421 3.379c-.882.808-2.033 1.297-3.33 1.297z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="p-2 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-full transition-all duration-200" aria-label="YouTube">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Copyright -->
+                    <div class="text-center md:text-right">
+                        <p class="text-xs text-muted-foreground">
+                            © <span id="currentYear">2024</span> Sharada Vidhya Mandir. All rights reserved.
+                        </p>
+                        <p class="text-xs text-muted-foreground mt-1">
+                            Preparing students for SEE success since 1985
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button id="scrollToTop" class="fixed bottom-6 right-6 p-3 bg-primary text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 z-40">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="relative max-w-4xl max-h-[90vh] w-full">
+            <!-- Close Button -->
+            <button id="closeModal" class="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+
+            <!-- Navigation Buttons -->
+            <button id="prevImage" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <button id="nextImage" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-colors">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+            <!-- Image Content -->
+            <div id="modalContent" class="bg-white rounded-lg overflow-hidden">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="script.js">
+    </script>
+
+<!-- Removed duplicate Firebase initialization and db variable to avoid redeclaration errors. 
+If you need to fetch and render teachers, use the db instance from the first script block or combine logic into a single script. -->
+
+</body>
+</html>
