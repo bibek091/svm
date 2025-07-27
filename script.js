@@ -29,7 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-const btn = document.getElementById('tourBtn'); // Use specific ID
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('view-notice').addEventListener('click', () => {
+    alert("🚧 Feature Coming Soon!\nThis section is currently under development as part of our testing phase. Please check back later for updates on SEE Admission 2024.");
+  });
+});
+
+const btn = document.getElementById('tourBtn');
 const modal = document.getElementById('videoModal');
 const closeModal = document.getElementById('closeModal');
 const video = document.getElementById('tourVideo');
@@ -45,7 +51,6 @@ closeModal.addEventListener('click', () => {
   modal.classList.add('hidden');
 });
 
-// Optional: close modal if clicking outside the video box
 modal.addEventListener('click', e => {
   if (e.target === modal) {
     video.pause();
@@ -53,6 +58,8 @@ modal.addEventListener('click', e => {
     modal.classList.add('hidden');
   }
 });
+
+
 
 
 
