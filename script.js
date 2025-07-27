@@ -77,19 +77,7 @@ const galleryData = [
     },
     {
         id: 7,
-<<<<<<< HEAD
-<<<<<<< HEAD
         src: 'images/Farewell/1.jpg',
-        
-=======
-        src: [
-            'images/Farewell/1.jpg',
-        'images/Farewell/fw.jpg'
-        ],
->>>>>>> 751aec0 (Initial commit - add all website files including images)
-=======
-        src: 'images/Farewell/1.jpg',
->>>>>>> eaebc80 (Save work before pulling)
         title: 'Grade 10 Farewell',
         category: 'Cultural',
         date: '2024-01-20',
@@ -648,8 +636,9 @@ if ('IntersectionObserver' in window) {
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
-<<<<<<< HEAD
+} else {
+    // Fallback for browsers without IntersectionObserver support
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('animate-fade-in');
+    });
 }
-=======
-}
->>>>>>> 751aec0 (Initial commit - add all website files including images)
