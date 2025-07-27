@@ -22,6 +22,31 @@ const slides = [
         subtitle: 'Comprehensive Learning for Secondary Education Examination'
     }
 ];
+const btn = document.getElementById('tourBtn'); // Use specific ID
+const modal = document.getElementById('videoModal');
+const closeModal = document.getElementById('closeModal');
+const video = document.getElementById('tourVideo');
+
+btn.addEventListener('click', () => {
+  modal.classList.remove('hidden');
+  video.play();
+});
+
+closeModal.addEventListener('click', () => {
+  video.pause();
+  video.currentTime = 0;
+  modal.classList.add('hidden');
+});
+
+// Optional: close modal if clicking outside the video box
+modal.addEventListener('click', e => {
+  if (e.target === modal) {
+    video.pause();
+    video.currentTime = 0;
+    modal.classList.add('hidden');
+  }
+});
+
 
 
 

@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharada Vidhya Mandir - SEE Level Secondary School</title>
+    <title>Sharada Vidhya Mandir - SEE Level Secondary School
+    </title>
+            <link rel="icon" href="images/logo.png" type="image/png">
        <!-- Add this to your <head> or before closing <body> tag -->
-<!-- In <head> -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
-<!-- Before </body> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-
-<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -22,6 +18,17 @@
   
 </head>
 <body class="min-h-screen bg-background text-foreground">
+    <!-- Video Modal (hidden by default) -->
+<div id="videoModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 hidden z-50">
+  <div class="bg-white rounded-lg overflow-hidden max-w-3xl w-full relative">
+    <button id="closeModal" class="absolute top-2 right-2 text-black text-2xl font-bold">&times;</button>
+    <video id="tourVideo" controls class="w-full h-auto" preload="metadata">
+      <source src="videos/video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
     <!-- Header -->
     <header class="fixed top-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,13 +147,17 @@
                     <button class="px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-colors duration-200">
                         SEE Admission 2024
                     </button>
-                    <button class="px-6 py-3 border border-white text-white hover:bg-white hover:text-black rounded-lg font-medium transition-colors duration-200 flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <polygon points="5,3 19,12 5,21"/>
-                        </svg>
-                        School Tour
-                    </button>
+                   <button id="tourBtn" class="px-6 py-3 border border-white text-white hover:bg-white hover:text-black rounded-lg font-medium transition-colors duration-200 flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <polygon points="5,3 19,12 5,21"/>
+    </svg>
+    School Tour
+</button>
+
+
+
                 </div>
+                
 
                 <!-- Stats -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
@@ -179,7 +190,7 @@
                     </div>
                 </div>
             </div>
-
+   
             <!-- Slide Indicators -->
             <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
                 <button onclick="setSlide(0)" id="indicator-0" class="w-3 h-3 rounded-full bg-white transition-colors duration-200"></button>
@@ -566,23 +577,19 @@
                             </div>
                             <!-- Additional contact cards would go here -->
                         </div>
+<!-- Embedded Google Map -->
+<div class="bg-card rounded-lg overflow-hidden">
+  <iframe
+    class="w-full h-64 border-0"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d342.2970889512717!2d82.31344088892457!3d28.163910571874235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3997f3b7c417a93f%3A0xed914dd21ed24b66!2sSharada%20Viddhya%20Mandir!5e0!3m2!1sen!2snp!4v1690485183652!5m2!1sen!2snp"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Sharada Viddhya Mandir Location"
+  ></iframe>
+</div>
 
-                        <!-- Map Placeholder -->
-                        <div class="bg-card rounded-lg overflow-hidden">
-                            <div class="h-64 bg-muted relative">
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="text-center">
-                                        <svg class="w-12 h-12 text-primary mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                        </svg>
-                                        <p class="text-muted-foreground">Interactive Map</p>
-                                        <p class="text-sm text-muted-foreground">Click to view location on Google Maps</p>
-                                    </div>
-                                </div>
-                                <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5"></div>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <!-- Contact Form -->
                     <div class="bg-card rounded-lg">
@@ -805,11 +812,12 @@
     </div>
     
 
-    <script src="script.js">
-    </script>
+  
 
 <!-- Removed duplicate Firebase initialization and db variable to avoid redeclaration errors. 
 If you need to fetch and render teachers, use the db instance from the first script block or combine logic into a single script. -->
 
 </body>
+  <script src="script.js">
+    </script>
 </html>
