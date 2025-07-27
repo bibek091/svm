@@ -72,47 +72,47 @@ const galleryData = [
         title: '2082 First Terminal result Publication',
         category: 'SEE Prep',
         date: '2024-02-20',
-        description: 'Grade 10 students attending intensive SEE preparation classes with our expert teachers.'
+        description: 'Celebrating the announcement of our students exam results — a day of achievement and pride.'
     },
     {
         id: 2,
-        src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop',
+        src: 'images/gurupurnima.jpg',
         title: 'Science Laboratory Work',
         category: 'Academic',
         date: '2024-02-15',
-        description: 'Students conducting practical experiments in our well-equipped science laboratory.'
+        description: 'Honoring teachers and mentors on Gurupurnima, a day dedicated to gratitude and respect.'
     },
     {
         id: 3,
-        src: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=300&fit=crop',
+        src: 'images/plantation program.jpg',
         title: 'Inter-House Basketball',
         category: 'Sports',
         date: '2024-02-10',
-        description: 'Grade 9 and 10 students participating in inter-house basketball tournament.'
+        description: 'Joining hands to plant trees and nurture a greener future for our community.'
     },
     {
         id: 4,
-        src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop',
+        src: 'images/yoga.png',
         title: 'SEE Toppers Award Ceremony',
         category: 'Awards',
         date: '2024-02-05',
-        description: 'Celebrating our SEE 2023 toppers and their outstanding achievements.'
+        description: 'On the eve of International Yoga Day, a one-day yoga practice and training program was conducted at Sharada Vidya Mandir, located in Raksachour, Tulsipur Sub-Metropolitan City–4.'
     },
     {
         id: 5,
-        src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
+        src: 'images/awareness.png',
         title: 'Cultural Dance Performance',
         category: 'Cultural',
         date: '2024-01-28',
-        description: 'Students showcasing traditional Nepali dances during our cultural program.'
+        description: 'A dengue awareness program was conducted at Sharada Vidya Mandir, located in Raksachour, Tulsipur Sub-Metropolitan City–4, Dang Valley. Considering the risk of dengue fever currently spreading across the country, the program was organized by the Raksachour Community Health Unit.'
     },
     {
         id: 6,
-        src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop',
+        src: 'images/environment day.png',
         title: 'Mathematics Olympiad',
         category: 'Academic',
         date: '2024-01-25',
-        description: 'Grade 10 students competing in the inter-school mathematics olympiad competition.'
+        description: 'A dengue awareness program was conducted at Sharada Vidya Mandir, located in Raksachour, Tulsipur Sub-Metropolitan City–4, Dang Valley. Considering the risk of dengue fever currently spreading across the country, the program was organized by the Raksachour Community Health Unit.'
     },
     {
         id: 7,
@@ -122,22 +122,6 @@ const galleryData = [
         category: 'Cultural',
         date: '2024-01-20',
         description: 'Emotional farewell ceremony for our Grade 10 students before SEE examinations.'
-    },
-    {
-        id: 8,
-        src: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=300&fit=crop',
-        title: 'SEE Mock Examination',
-        category: 'SEE Prep',
-        date: '2024-01-15',
-        description: 'Grade 10 students taking their final mock examination before the actual SEE.'
-    },
-    {
-        id: 9,
-        src: 'https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=300&fit=crop',
-        title: 'Grade 9 Project Presentation',
-        category: 'Academic',
-        date: '2024-01-10',
-        description: 'Grade 9 students presenting their term projects to teachers and fellow students.'
     }
     
 ];
