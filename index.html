@@ -143,7 +143,7 @@
                 <p id="heroSubtitle" class="text-lg sm:text-xl lg:text-2xl mb-8 opacity-90">
                     Preparing Students for SEE Success & Beyond
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <div  class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                     <button id="admission-btn" class="px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-colors duration-200">
                          Admission 2025
                     </button>
@@ -463,7 +463,7 @@
                         </div>
                         <div class="px-6 pb-6">
                             <p class="text-muted-foreground mb-4 leading-relaxed">
-                                SEE examination registration for Grade 10 students starts from March 1st, 2024. All required documents must be submitted by March 15th.
+                                SEE examination registration for Grade 10 students starts from March 1st, 2025. All required documents must be submitted by March 15th.
                             </p>
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center text-xs text-muted-foreground">
@@ -487,7 +487,7 @@
                 </div>
 
                 <div class="text-center mt-12">
-                    <button class="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center gap-2 mx-auto">
+                    <button id="view-notice" class="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center gap-2 mx-auto">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
@@ -602,40 +602,68 @@
                             </h3>
                         </div>
                         <div class="p-6">
-                            <form id="contactForm" class="space-y-6">
-                                <div class="grid sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label for="name" class="block text-sm font-medium mb-1">Full Name *</label>
-                                        <input type="text" id="name" name="name" required placeholder="Enter your full name" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring">
-                                    </div>
-                                    <div>
-                                        <label for="phone" class="block text-sm font-medium mb-1">Phone Number</label>
-                                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-medium mb-1">Email Address *</label>
-                                    <input type="email" id="email" name="email" required placeholder="Enter your email address" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring">
-                                </div>
-                                <div>
-                                    <label for="subject" class="block text-sm font-medium mb-1">Subject *</label>
-                                    <input type="text" id="subject" name="subject" required placeholder="What is this regarding?" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring">
-                                </div>
-                                <div>
-                                    <label for="message" class="block text-sm font-medium mb-1">Message *</label>
-                                    <textarea id="message" name="message" required placeholder="Tell us more about your inquiry..." rows="5" class="w-full px-3 py-2 border border-border rounded-lg bg-input-background focus:outline-none focus:ring-2 focus:ring-ring resize-vertical"></textarea>
-                                </div>
-                                <button type="submit" class="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                                    </svg>
-                                    Send Message
-                                </button>
-                                <p class="text-xs text-muted-foreground text-center">
-                                    We'll get back to you within 24 hours during business days.
-                                </p>
-                            </form>
+                  <form id="contactForm" action="https://formspree.io/f/manbeqbd" method="POST" class="space-y-6">
+    <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+            <label for="name" class="block text-sm font-medium mb-1 text-white">Full Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name" 
+                class="w-full px-3 py-2 border border-white rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white">
+        </div>
+        <div>
+            <label for="phone" class="block text-sm font-medium mb-1 text-white">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" 
+                class="w-full px-3 py-2 border border-white rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white">
+        </div>
+    </div>
+    <div>
+        <label for="email" class="block text-sm font-medium mb-1 text-white">Email Address *</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email address" 
+            class="w-full px-3 py-2 border border-white rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white">
+    </div>
+    <div>
+        <label for="subject" class="block text-sm font-medium mb-1 text-white">Subject *</label>
+        <input type="text" id="subject" name="subject" required placeholder="What is this regarding?" 
+            class="w-full px-3 py-2 border border-white rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white">
+    </div>
+    <div>
+        <label for="message" class="block text-sm font-medium mb-1 text-white">Message *</label>
+        <textarea id="message" name="message" required placeholder="Tell us more about your inquiry..." rows="5" 
+            class="w-full px-3 py-2 border border-white rounded-lg bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white resize-vertical"></textarea>
+    </div>
+    <button type="submit" class="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+        </svg>
+        Send Message
+    </button>
+    <p class="text-xs text-muted-foreground text-center text-white">
+        We'll get back to you within 24 hours during business days.
+    </p>
+</form>
+
+
                         </div>
+                         <!-- <div class="md:w-1/2">
+  <form action="https://formspree.io/f/manbeqbd" method="POST" class="space-y-4">
+    <div>
+      <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-white/70" required>
+    </div>
+    
+    <div>
+      <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-white/70" required>
+    </div>
+    
+    <div>
+      <input type="text" name="subject" placeholder="Subject" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-white/70" required>
+    </div>
+    
+    <div>
+      <textarea name="message" rows="5" placeholder="Your Message" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-white/70" required></textarea>
+    </div>
+    
+    <button type="submit" class="w-full bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-colors">Send Message</button>
+  </form>
+</div> -->
                     </div>
                 </div>
             </div>
@@ -646,7 +674,7 @@
     <footer class="bg-card border-t">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Main Footer Content -->
-            <div class="py-12">
+            <div class="py-12"></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- School Info -->
                     <div class="lg:col-span-1">
@@ -657,6 +685,7 @@
                                 </svg>
                             </div>
                             <div>
+                                
                                 <h3 class="font-semibold text-foreground">Sharada Vidhya Mandir</h3>
                                 <p class="text-xs text-muted-foreground">SEE Level Secondary School</p>
                             </div>
@@ -673,15 +702,15 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                                 </svg>
                                 <p class="text-xs text-muted-foreground">
-                                    Education Ward-5, Kathmandu<br>
-                                    Bagmati Province, Nepal
+                                   Rakshyachaur 04, Tulsipur, Dang<br>
+                                    Lumbini Province, Nepal
                                 </p>
                             </div>
                             <div class="flex items-center space-x-3">
                                 <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                                 </svg>
-                                <p class="text-xs text-muted-foreground">+977 1-5234567</p>
+                                <p class="text-xs text-muted-foreground">+977 9867154760</p>
                             </div>
                             <div class="flex items-center space-x-3">
                                 <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -739,7 +768,7 @@
                     <!-- Social Links -->
                     <div class="flex items-center space-x-4">
                         <span class="text-sm text-muted-foreground">Follow us:</span>
-                        <a href="#" class="p-2 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-full transition-all duration-200" aria-label="Facebook">
+                        <a href="https://www.facebook.com/sharada.viddhyamandir" class="p-2 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-full transition-all duration-200" aria-label="Facebook">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                             </svg>
