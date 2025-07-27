@@ -70,22 +70,22 @@ const galleryData = [
         id: 1,
         src: 'images/result.jpg',
         title: '2082 First Terminal result Publication',
-        category: 'SEE Prep',
+        category: 'SEE prep',
         date: '2024-02-20',
         description: 'Celebrating the announcement of our students exam results — a day of achievement and pride.'
     },
     {
         id: 2,
         src: 'images/gurupurnima.jpg',
-        title: 'Science Laboratory Work',
-        category: 'Academic',
+        title: 'Guru Purnima',
+        category: 'Cultural',
         date: '2024-02-15',
         description: 'Honoring teachers and mentors on Gurupurnima, a day dedicated to gratitude and respect.'
     },
     {
         id: 3,
         src: 'images/plantation program.jpg',
-        title: 'Inter-House Basketball',
+        title: 'Asar-15 Plantation Program',
         category: 'Sports',
         date: '2024-02-10',
         description: 'Joining hands to plant trees and nurture a greener future for our community.'
@@ -93,7 +93,7 @@ const galleryData = [
     {
         id: 4,
         src: 'images/yoga.png',
-        title: 'SEE Toppers Award Ceremony',
+        title: 'Imternational Yoga Day',
         category: 'Awards',
         date: '2024-02-05',
         description: 'On the eve of International Yoga Day, a one-day yoga practice and training program was conducted at Sharada Vidya Mandir, located in Raksachour, Tulsipur Sub-Metropolitan City–4.'
@@ -101,7 +101,7 @@ const galleryData = [
     {
         id: 5,
         src: 'images/awareness.png',
-        title: 'Cultural Dance Performance',
+        title: 'Dengue Awareness Program',
         category: 'Cultural',
         date: '2024-01-28',
         description: 'A dengue awareness program was conducted at Sharada Vidya Mandir, located in Raksachour, Tulsipur Sub-Metropolitan City–4, Dang Valley. Considering the risk of dengue fever currently spreading across the country, the program was organized by the Raksachour Community Health Unit.'
@@ -109,7 +109,7 @@ const galleryData = [
     {
         id: 6,
         src: 'images/environment day.png',
-        title: 'Mathematics Olympiad',
+        title: 'World Environment Day',
         category: 'Academic',
         date: '2024-01-25',
         description: 'A dengue awareness program was conducted at Sharada Vidya Mandir, located in Raksachour, Tulsipur Sub-Metropolitan City–4, Dang Valley. Considering the risk of dengue fever currently spreading across the country, the program was organized by the Raksachour Community Health Unit.'
