@@ -29,8 +29,8 @@ const slides = [
 const galleryData = [
     {
         id: 1,
-        src: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=300&fit=crop',
-        title: 'SEE Preparation Session',
+        src: 'images/result.jpg',
+        title: '2082 First Terminal result Publication',
         category: 'SEE Prep',
         date: '2024-02-20',
         description: 'Grade 10 students attending intensive SEE preparation classes with our expert teachers.'
@@ -77,7 +77,8 @@ const galleryData = [
     },
     {
         id: 7,
-        src: 'images/Farewell/1.jpg',
+        src: 
+            'images/Farewell/1.jpg',
         title: 'Grade 10 Farewell',
         category: 'Cultural',
         date: '2024-01-20',
