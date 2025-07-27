@@ -22,6 +22,13 @@ const slides = [
         subtitle: 'Comprehensive Learning for Secondary Education Examination'
     }
 ];
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('admission-btn').addEventListener('click', () => {
+    alert("🚧 Feature Coming Soon!\nThis section is currently under development as part of our testing phase. Please check back later for updates on SEE Admission 2024.");
+  });
+});
+
 const btn = document.getElementById('tourBtn'); // Use specific ID
 const modal = document.getElementById('videoModal');
 const closeModal = document.getElementById('closeModal');
