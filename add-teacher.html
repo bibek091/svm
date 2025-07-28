@@ -2,40 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Add Teacher</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
-    body {
-      font-family: sans-serif;
-      padding: 2rem;
-      background: #f4f4f4;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 400px;
-    }
+    body { font-family: sans-serif; padding: 2rem; background: #f4f4f4; }
+    form { max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 10px; }
     input, button {
-      padding: 10px;
-      font-size: 1rem;
+      padding: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px;
     }
     button {
-      background: #007BFF;
-      color: white;
-      border: none;
-      cursor: pointer;
+      background-color: #007BFF; color: white; border: none; cursor: pointer;
       transition: background-color 0.3s ease;
     }
-    button:hover {
-      background: #0056b3;
+    button:hover { background-color: #0056b3; }
+    #logoutBtn {
+      margin-top: 20px; background: #dc3545; border: none; color: white;
+      padding: 10px; cursor: pointer; border-radius: 4px;
+      max-width: 400px; width: 100%; display: block; margin-left: auto; margin-right: auto;
     }
   </style>
 </head>
 <body>
 
-  <h2>Add New Teacher</h2>
+  <h2 style="text-align:center;">Add New Teacher</h2>
 
   <form id="teacherForm">
     <input type="text" placeholder="Name" id="name" required />
@@ -49,11 +38,13 @@
     <button type="submit">Submit</button>
   </form>
 
+  <button id="logoutBtn">Logout</button>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    // Replace the config values with your actual Firebase project details
     const firebaseConfig = {
       apiKey: "AIzaSyDymbKVAeevT5hqFJc8JvDPYgqCNSKou5U",
       authDomain: "schooldb-c9cd1.firebaseapp.com",
@@ -61,27 +52,34 @@
       storageBucket: "schooldb-c9cd1.appspot.com",
       messagingSenderId: "645507156099",
       appId: "1:645507156099:web:278b79daac68121ed633b6"
-      // measurementId is optional and can be omitted if you don’t use analytics
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
     const db = getFirestore(app);
 
     const form = document.getElementById("teacherForm");
+    const logoutBtn = document.getElementById("logoutBtn");
 
-    form.addEventListener("submit", async (e) => {
+    // Redirect to login if not logged in
+    onAuthStateChanged(auth, user => {
+      if (!user) {
+        window.location.href = "login1.html";
+      }
+    });
+
+    form.addEventListener("submit", async e => {
       e.preventDefault();
 
       const data = {
-        name: document.getElementById("name").value.trim(),
-        subject: document.getElementById("subject").value.trim(),
-        experience: document.getElementById("experience").value.trim(),
-        qualifications: document.getElementById("qualifications").value.trim(),
-        imageurl: document.getElementById("imageurl").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        specializations: document.getElementById("specializations").value
+        name: form.name.value.trim(),
+        subject: form.subject.value.trim(),
+        experience: form.experience.value.trim(),
+        qualifications: form.qualifications.value.trim(),
+        imageurl: form.imageurl.value.trim(),
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        specializations: form.specializations.value
           .split(",")
           .map(s => s.trim())
           .filter(s => s.length > 0)
@@ -91,11 +89,15 @@
         await addDoc(collection(db, "teacher"), data);
         alert("✅ Teacher added successfully!");
         form.reset();
-        window.location.href = "index.html"; // Redirect after success
       } catch (err) {
         console.error("❌ Error adding teacher:", err);
-        alert("Error adding teacher. Check the console for details.");
+        alert("Error adding teacher. Check console.");
       }
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "login1.html";
     });
   </script>
 
